@@ -1,13 +1,13 @@
 {
-    "title": "Nerds of the 90s",
-    "description": "This is just a demo of a webring. It could be about anything - Metal Bands, Knitting, Craft Beer, Accessibility... For this one, let's just say it's about the good old 90s.",
+    "title": "MuizenMesh Community Sites",
+    "description": "You have arrived at our MuizenMesh WebRing. It provides navigation and acccess to our Mesh Sites. If you have a site on MuizenMesh, please fill out the form and display the banner.",
     "image": "freakazoid.jpg",
-    "url": "https://webringdemo.netlify.com",
-    "repo": "https://github.com/maxboeck/webring",
+    "url": "https://webring.muizenmesh.com",
+    "repo": "https://github.com/ubuntupunk/webring",
     "admins": [
         {
-            "name": "Max Böck",
-            "url": "https://github.com/maxboeck"
+            "name": "David Robert Lewis",
+            "url": "https://github.com/ubuntupunk"
         }
     ]
 }
