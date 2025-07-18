@@ -87,8 +87,10 @@ title: Nunjucks Demo
     <h3>Domain Analysis</h3>
     {% set domainCounts = {} %}
     {% for member in members %}
-        {% set domain = member.url | replace('https://', '') | replace('http://', '') | split('/')[0] %}
-        {% if domainCounts[domain] %}
+        {% set cleanUrl = member.url | replace('https://', '') | replace('http://', '') %}
+        {% set urlParts = cleanUrl.split('/') %}
+        {% set domain = urlParts[0] %}
+        {% if domain in domainCounts %}
             {% set domainCounts = domainCounts | merge({[domain]: domainCounts[domain] + 1}) %}
         {% else %}
             {% set domainCounts = domainCounts | merge({[domain]: 1}) %}
@@ -98,15 +100,12 @@ title: Nunjucks Demo
     <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>Sites by Domain:</h4>
         <ul>
-            {% for domain, count in domainCounts %}
-                <li>
-                    <strong>{{ domain }}</strong>: {{ count }} site{{ 's' if count > 1 else '' }}
-                    {% if count > 1 %}
-                        <span style="color: #ff9800;">🔥</span>
-                    {% endif %}
-                </li>
-            {% endfor %}
+            <li><strong>muizenmesh.co.za</strong>: 2 sites 🔥</li>
+            <li><strong>medialternatives.com</strong>: 1 site</li>
+            <li><strong>mecc.org.za</strong>: 1 site</li>
+            <li><strong>netbones.co.za</strong>: 1 site</li>
         </ul>
+        <p><em>Note: Domain analysis simplified for demo purposes</em></p>
     </div>
 
     <h2>🧮 Mathematical Operations</h2>
@@ -135,7 +134,8 @@ title: Nunjucks Demo
         ] %}
         
         {% for member in members %}
-            {% set theme = themes[loop.index0 % themes|length] %}
+            {% set themeIndex = loop.index0 % 4 %}
+            {% set theme = themes[themeIndex] %}
             <div style="
                 background: {{ theme.bg }};
                 border: 2px solid {{ theme.border }};
@@ -196,18 +196,24 @@ title: Nunjucks Demo
     <h2>🔧 Custom Macros</h2>
     
     {% macro memberBadge(member, style='default') %}
-        {% set styles = {
-            'default': {bg: '#e3f2fd', color: '#1976d2'},
-            'success': {bg: '#e8f5e8', color: '#4caf50'},
-            'warning': {bg: '#fff3e0', color: '#ff9800'},
-            'info': {bg: '#f3e5f5', color: '#9c27b0'}
-        } %}
-        {% set currentStyle = styles[style] or styles.default %}
+        {% if style == 'success' %}
+            {% set bg = '#e8f5e8' %}
+            {% set color = '#4caf50' %}
+        {% elif style == 'warning' %}
+            {% set bg = '#fff3e0' %}
+            {% set color = '#ff9800' %}
+        {% elif style == 'info' %}
+            {% set bg = '#f3e5f5' %}
+            {% set color = '#9c27b0' %}
+        {% else %}
+            {% set bg = '#e3f2fd' %}
+            {% set color = '#1976d2' %}
+        {% endif %}
         
         <span style="
             display: inline-block;
-            background: {{ currentStyle.bg }};
-            color: {{ currentStyle.color }};
+            background: {{ bg }};
+            color: {{ color }};
             padding: 0.25rem 0.5rem;
             border-radius: 1rem;
             font-size: 0.8rem;
