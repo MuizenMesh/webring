@@ -31,24 +31,31 @@ class WebringBanner extends HTMLElement {
             font-family: sans-serif;
             font-size: 16px;
             text-align:left;
+            
+            /* Read CSS custom properties from host element */
+            --webring-bg: var(--webring-bg, #FFF);
+            --webring-border: var(--webring-border, #DDD);
+            --webring-text: var(--webring-text, #333);
+            --webring-accent: var(--webring-accent, #7b16ff);
           }
   
           .webring-banner {
-            background-color: #FFF;
-            border: 1px solid #DDD;
+            background-color: var(--webring-bg);
+            border: 1px solid var(--webring-border);
             border-radius: 8px;
             box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
             max-width:480px;
+            color: var(--webring-text);
           }
 
           .webring-banner a {
-            color: #7b16ff;
+            color: var(--webring-accent);
             text-decoration:none;
           }
 
           .webring-banner a:hover,
           .webring-banner a:focus {
-            color: #6200e2;
+            color: var(--webring-accent);
             text-decoration:underline;
           }
 
@@ -86,13 +93,13 @@ class WebringBanner extends HTMLElement {
             justify-content:center;
             align-items:center;
             border-radius:50%;
-            border: 2px solid #DDD;
-            background: #f8f9fa;
+            border: 2px solid var(--webring-border);
+            background: var(--webring-bg);
             width:1.25rem;
             height:1.25rem;
             font-size: .75rem;
             text-align:center;
-            color: #666;
+            color: var(--webring-text);
             text-decoration:none;
             position:absolute;
             top:1rem;
@@ -103,8 +110,8 @@ class WebringBanner extends HTMLElement {
 
           .webring-banner__info:hover,
           .webring-banner__info:focus {
-            color: #0d6efd;
-            border-color: #0d6efd;
+            color: var(--webring-accent);
+            border-color: var(--webring-accent);
           }
 
           /* Custom tooltip styling */
@@ -113,7 +120,7 @@ class WebringBanner extends HTMLElement {
             position: fixed;
             top: 1.5rem;
             right: 1.5rem;
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
+            background: linear-gradient(135deg, var(--webring-accent), #6610f2);
             color: white;
             padding: 0.5rem 0.75rem;
             border-radius: 1rem;
@@ -137,7 +144,7 @@ class WebringBanner extends HTMLElement {
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-bottom: 5px solid #0d6efd;
+            border-bottom: 5px solid var(--webring-accent);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -165,7 +172,7 @@ class WebringBanner extends HTMLElement {
           .webring-banner__link {
             display:block;
             text-decoration:none;
-            color: #00ad9f;
+            color: var(--webring-accent);
           }
 
           .webring-banner__link--random {

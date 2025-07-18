@@ -230,29 +230,42 @@ webring-banner {
     margin: 1rem 0;
 }
 
-/* Override default webring banner styles with CSS custom properties */
-webring-banner .webring-banner {
-    background-color: var(--webring-bg, #FFF) !important;
-    border-color: var(--webring-border, #DDD) !important;
-    color: var(--webring-text, #333) !important;
+/* Since webring-banner uses Shadow DOM, we need to pass CSS custom properties */
+/* The web component will read these CSS variables from the host element */
+
+.theme-ocean {
+    --webring-bg: #e3f2fd;
+    --webring-border: #90caf9;
+    --webring-text: #0d47a1;
+    --webring-accent: #1976d2;
 }
 
-webring-banner .webring-banner__title a {
-    color: var(--webring-accent, #7b16ff) !important;
+.theme-sunset {
+    --webring-bg: #fff3e0;
+    --webring-border: #ffcc02;
+    --webring-text: #e65100;
+    --webring-accent: #ff9800;
 }
 
-webring-banner .webring-banner__link {
-    color: var(--webring-accent, #00ad9f) !important;
+.theme-dark {
+    --webring-bg: #212529;
+    --webring-border: #495057;
+    --webring-text: #f8f9fa;
+    --webring-accent: #0dcaf0;
 }
 
-webring-banner .webring-banner__info {
-    border-color: var(--webring-border, #DDD) !important;
-    color: var(--webring-text, #666) !important;
+.theme-minimal {
+    --webring-bg: #ffffff;
+    --webring-border: #e9ecef;
+    --webring-text: #6c757d;
+    --webring-accent: #343a40;
 }
 
-webring-banner .webring-banner__info:hover {
-    color: var(--webring-accent, #0d6efd) !important;
-    border-color: var(--webring-accent, #0d6efd) !important;
+.theme-custom {
+    --webring-bg: #f0f8ff;
+    --webring-border: #9370db;
+    --webring-text: #4b0082;
+    --webring-accent: #8a2be2;
 }
 
 /* Responsive adjustments */
