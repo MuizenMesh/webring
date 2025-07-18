@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { WebringWidgetProps, webringThemes } from './types';
 import styles from './WebringWidget.module.css';
@@ -12,7 +12,11 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
   className = '',
   showDescription = true
 }) => {
-  const [showTooltip, setShowTooltip] = React.useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [isKeyboardNav, setIsKeyboardNav] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const infoButtonRef = useRef<HTMLAnchorElement>(null);
+  
   const currentTheme = webringThemes[theme] || webringThemes.default;
   
   const getSizeClass = () => {
@@ -22,6 +26,40 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
       default: return styles.sizeMedium;
     }
   };
+
+  // Handle keyboard navigation detection
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        setIsKeyboardNav(true);
+      }
+    };
+    
+    const handleMouseDown = () => {
+      setIsKeyboardNav(false);
+    };
+    
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleMouseDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
+  // Handle Escape key to close tooltip
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && showTooltip) {
+        setShowTooltip(false);
+        infoButtonRef.current?.focus();
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [showTooltip]);
 
   const themeStyles = {
     '--webring-bg': currentTheme.colors.background,
@@ -36,70 +74,112 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div 
-      className={`widget ${styles.webringWidget} ${getSizeClass()} ${styles[`theme-${theme}`]} ${className}`}
+    <aside 
+      className={`widget ${styles.webringWidget} ${getSizeClass()} ${styles[`theme-${theme}`]} ${className} ${isKeyboardNav ? styles.keyboardNav : ''}`}
       style={themeStyles}
+      role="complementary"
+      aria-labelledby="webring-title"
     >
-      <h3 className={styles.widgetTitle}>{title}</h3>
+      <h3 id="webring-title" className={styles.widgetTitle}>{title}</h3>
+      
       <div className={styles.webringContent}>
         {showImage && (
           <div className={styles.surferImageContainer}>
             <Image
               src="https://meshring.netlify.app/assets/images/surfer.jpg"
-              alt="Surfer"
+              alt="Surfer on a wave"
               width={size === 'small' ? 40 : size === 'large' ? 80 : 60}
               height={size === 'small' ? 40 : size === 'large' ? 80 : 60}
               className={styles.surferImage}
+              role="img"
+              aria-label="Surfer on a wave"
             />
           </div>
         )}
+        
         <div className={styles.webringText}>
           <p className={styles.webringIntro}>Member of the</p>
           <h4 className={styles.webringName}>
-            <a href={webringUrl}>MuizenMesh Webring</a>
+            <a 
+              href={webringUrl}
+              aria-label="Visit MuizenMesh Webring homepage"
+            >
+              MuizenMesh Webring
+            </a>
           </h4>
+          
           {showDescription && (
-            <p className={styles.webringMembers}>A community of independent websites</p>
+            <p className={styles.webringMembers}>
+              A community of independent websites
+            </p>
           )}
         </div>
         
-        <span className={styles.webringInfoContainer}>
+        <div className={styles.webringInfoContainer}>
           <a 
+            ref={infoButtonRef}
             href="https://en.wikipedia.org/wiki/Webring"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.webringInfo}
-            aria-label="Learn more about webrings on Wikipedia"
+            aria-label="Learn more about webrings on Wikipedia (opens in new tab)"
+            aria-describedby={showTooltip ? "webring-tooltip" : undefined}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
             onFocus={() => setShowTooltip(true)}
             onBlur={() => setShowTooltip(false)}
-            title="" // Disable browser tooltip
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setShowTooltip(false);
+              }
+            }}
+            title=""
           >
-            ?
+            <span aria-hidden="true">?</span>
+            <span className="sr-only">Learn more about webrings</span>
           </a>
+          
           {showTooltip && (
-            <>
-              <div className={styles.webringTooltip}>
-                Learn more about webrings on Wikipedia
-              </div>
-              <div className={styles.webringTooltipArrow}></div>
-            </>
+            <div 
+              id="webring-tooltip"
+              ref={tooltipRef}
+              role="tooltip"
+              className={styles.webringTooltip}
+              aria-live="polite"
+            >
+              Learn more about webrings on Wikipedia
+            </div>
           )}
-        </span>
+        </div>
       </div>
-      <div className={styles.webringNavigation}>
-        <a href={`${webringUrl}/prev`} className={styles.webringLink}>
+      
+      <nav 
+        className={styles.webringNavigation}
+        aria-label="Webring navigation"
+      >
+        <a 
+          href={`${webringUrl}/prev`} 
+          className={styles.webringLink}
+          aria-label="Go to previous website in the webring"
+        >
           &larr; Previous
         </a>
-        <a href={`${webringUrl}/random`} className={styles.webringLink}>
+        <a 
+          href={`${webringUrl}/random`} 
+          className={styles.webringLink}
+          aria-label="Go to a random website in the webring"
+        >
           Random
         </a>
-        <a href={`${webringUrl}/next`} className={styles.webringLink}>
+        <a 
+          href={`${webringUrl}/next`} 
+          className={styles.webringLink}
+          aria-label="Go to next website in the webring"
+        >
           Next &rarr;
         </a>
-      </div>
-    </div>
+      </nav>
+    </aside>
   );
 };
 
