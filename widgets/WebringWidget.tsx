@@ -67,7 +67,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           className={styles.webringInfo}
-          title="Learn more about webrings on Wikipedia"
+          data-tooltip="Learn more about webrings on Wikipedia"
           aria-label="Learn more about webrings on Wikipedia"
         >
           ?

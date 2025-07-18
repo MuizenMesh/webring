@@ -166,7 +166,7 @@ class WebringWidget {
                     <a href="https://en.wikipedia.org/wiki/Webring" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       title="Learn more about webrings on Wikipedia"
+                       data-tooltip="Learn more about webrings on Wikipedia"
                        style="
                         display: flex;
                         justify-content: center;

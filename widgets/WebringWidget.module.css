@@ -117,10 +117,10 @@
 
 /* Custom tooltip styling */
 .webringInfo::after {
-  content: attr(title);
+  content: attr(data-tooltip);
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: linear-gradient(135deg, var(--webring-accent, #0d6efd), #6610f2);
   color: white;
   padding: 0.5rem 0.75rem;
@@ -139,8 +139,8 @@
 .webringInfo::before {
   content: '';
   position: fixed;
-  top: 2.75rem;
-  right: 1.75rem;
+  top: 3.25rem;
+  right: 2.25rem;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
