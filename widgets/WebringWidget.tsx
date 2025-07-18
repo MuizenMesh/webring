@@ -61,6 +61,17 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
             <p className={styles.webringMembers}>A community of independent websites</p>
           )}
         </div>
+        
+        <a 
+          href="https://en.wikipedia.org/wiki/Webring"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.webringInfo}
+          title="Learn more about webrings on Wikipedia"
+          aria-label="Learn more about webrings on Wikipedia"
+        >
+          ℹ️
+        </a>
       </div>
       <div className={styles.webringNavigation}>
         <a href={`${webringUrl}/prev`} className={styles.webringLink}>

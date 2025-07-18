@@ -40,6 +40,7 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .surferImageContainer {
@@ -86,6 +87,35 @@
   margin: 0;
   font-size: 0.8rem;
   color: var(--webring-text, #495057);
+}
+
+.webringInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--webring-accent, #0d6efd);
+  background: var(--webring-bg, #f8f9fa);
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--webring-accent, #0d6efd);
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.webringInfo:hover,
+.webringInfo:focus {
+  background: var(--webring-accent, #0d6efd);
+  color: var(--webring-bg, #ffffff);
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
 .webringNavigation {
@@ -206,6 +236,14 @@
   .surferImage {
     width: 50px;
     height: 50px;
+  }
+  
+  .webringInfo {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.875rem;
+    top: -0.25rem;
+    right: -0.25rem;
   }
 }
 

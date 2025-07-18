@@ -161,6 +161,42 @@ class WebringWidget {
                             ">A community of independent websites</p>
                         ` : ''}
                     </div>
+                    
+                    <a href="https://en.wikipedia.org/wiki/Webring" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       title="Learn more about webrings on Wikipedia"
+                       style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        border: 2px solid ${theme.accent};
+                        background: ${theme.background};
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        font-size: 1rem;
+                        text-align: center;
+                        color: ${theme.accent};
+                        text-decoration: none;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        transition: all 0.2s ease;
+                        cursor: pointer;
+                       "
+                       onmouseover="
+                        this.style.background='${theme.accent}';
+                        this.style.color='${theme.background}';
+                        this.style.transform='scale(1.1)';
+                        this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';
+                       "
+                       onmouseout="
+                        this.style.background='${theme.background}';
+                        this.style.color='${theme.accent}';
+                        this.style.transform='scale(1)';
+                        this.style.boxShadow='none';
+                       ">ℹ️</a>
                 </div>
                 
                 <div style="
