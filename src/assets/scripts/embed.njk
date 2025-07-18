@@ -84,18 +84,29 @@ class WebringBanner extends HTMLElement {
           .webring-banner__info {
             display:flex;
             justify-content:center;
+            align-items:center;
             border-radius:50%;
-            border: 2px solid #DDD;
-            width:1.25rem;
-            height:1.25rem;
-            line-height: 1.25rem;
-            font-size: .75rem;
+            border: 2px solid #0d6efd;
+            background: #f8f9fa;
+            width:1.5rem;
+            height:1.5rem;
+            font-size: 1rem;
             text-align:center;
-            color: #666;
+            color: #0d6efd;
             text-decoration:none;
             position:absolute;
             top:1rem;
             right:1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+          }
+
+          .webring-banner__info:hover,
+          .webring-banner__info:focus {
+            background: #0d6efd;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
           }
 
           .webring-banner__links {
@@ -145,7 +156,7 @@ class WebringBanner extends HTMLElement {
                 </h3>
                 <span>A webring with ${this.membercount} Members</span>
               </div>
-              <a class="webring-banner__info" href="https://en.wikipedia.org/wiki/Webring" title="What's this?">?</a>
+              <a class="webring-banner__info" href="https://en.wikipedia.org/wiki/Webring" title="Learn more about webrings on Wikipedia">ℹ️</a>
             </div>
             <p class="webring-banner__links">
               <a 
