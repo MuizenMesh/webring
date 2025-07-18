@@ -119,9 +119,9 @@
 }
 
 .webringTooltip {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
+  position: absolute;
+  bottom: 130%;
+  right: 0;
   background: linear-gradient(135deg, var(--webring-accent, #0d6efd), #6610f2);
   color: white;
   padding: 0.5rem 0.75rem;
@@ -129,21 +129,21 @@
   font-size: 0.75rem;
   white-space: nowrap;
   box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-  z-index: 10000;
+  z-index: 1000;
   pointer-events: none;
   animation: tooltipFadeIn 0.3s ease;
 }
 
 .webringTooltipArrow {
-  position: fixed;
-  top: 3.25rem;
-  right: 2.25rem;
+  position: absolute;
+  bottom: 120%;
+  right: 0.75rem;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid var(--webring-accent, #0d6efd);
-  z-index: 10000;
+  border-top: 5px solid var(--webring-accent, #0d6efd);
+  z-index: 1000;
   pointer-events: none;
 }
 
