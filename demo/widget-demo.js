@@ -95,6 +95,7 @@ class WebringWidget {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 font-size: ${this.options.size === 'small' ? '0.875rem' : 
                             this.options.size === 'large' ? '1.125rem' : '1rem'};
+                position: relative;
             ">
                 <h3 style="
                     font-size: 1.1rem;

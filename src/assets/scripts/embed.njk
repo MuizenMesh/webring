@@ -110,9 +110,9 @@ class WebringBanner extends HTMLElement {
           /* Custom tooltip styling */
           .webring-banner__info::after {
             content: attr(title);
-            position: absolute;
-            bottom: 130%;
-            right: 0;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
             background: linear-gradient(135deg, #0d6efd, #6610f2);
             color: white;
             padding: 0.5rem 0.75rem;
@@ -121,26 +121,28 @@ class WebringBanner extends HTMLElement {
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px);
+            transform: translateY(-10px);
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-            z-index: 1000;
+            z-index: 10000;
+            pointer-events: none;
           }
 
           .webring-banner__info::before {
             content: '';
-            position: absolute;
-            bottom: 120%;
-            right: 0.75rem;
+            position: fixed;
+            top: 2.75rem;
+            right: 1.75rem;
             width: 0;
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #0d6efd;
+            border-bottom: 5px solid #0d6efd;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 1000;
+            z-index: 10000;
+            pointer-events: none;
           }
 
           .webring-banner__info:hover::after,
