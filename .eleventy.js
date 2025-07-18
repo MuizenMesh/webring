@@ -34,6 +34,9 @@ module.exports = function (config) {
     })
 
     config.addPassthroughCopy('src/assets/images')
+    
+    // Copy demo files
+    config.addPassthroughCopy('demo')
 
     return {
         dir: {
