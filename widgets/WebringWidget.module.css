@@ -94,28 +94,70 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 2px solid var(--webring-accent, #0d6efd);
+  border: 2px solid #DDD;
   background: var(--webring-bg, #f8f9fa);
-  width: 1.5rem;
-  height: 1.5rem;
-  font-size: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
   text-align: center;
-  color: var(--webring-accent, #0d6efd);
+  color: #666;
   text-decoration: none;
   position: absolute;
   top: 0;
   right: 0;
-  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .webringInfo:hover,
 .webringInfo:focus {
-  background: var(--webring-accent, #0d6efd);
-  color: var(--webring-bg, #ffffff);
-  transform: scale(1.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: var(--webring-accent, #0d6efd);
+  border-color: var(--webring-accent, #0d6efd);
   text-decoration: none;
+}
+
+/* Custom tooltip styling */
+.webringInfo::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 130%;
+  right: 0;
+  background: linear-gradient(135deg, var(--webring-accent, #0d6efd), #6610f2);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+  z-index: 1000;
+}
+
+.webringInfo::before {
+  content: '';
+  position: absolute;
+  bottom: 120%;
+  right: 0.75rem;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--webring-accent, #0d6efd);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.webringInfo:hover::after,
+.webringInfo:focus::after,
+.webringInfo:hover::before,
+.webringInfo:focus::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .webringNavigation {

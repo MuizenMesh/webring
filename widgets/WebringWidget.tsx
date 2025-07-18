@@ -70,7 +70,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
           title="Learn more about webrings on Wikipedia"
           aria-label="Learn more about webrings on Wikipedia"
         >
-          ℹ️
+          ?
         </a>
       </div>
       <div className={styles.webringNavigation}>

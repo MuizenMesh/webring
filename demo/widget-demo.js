@@ -171,32 +171,27 @@ class WebringWidget {
                         justify-content: center;
                         align-items: center;
                         border-radius: 50%;
-                        border: 2px solid ${theme.accent};
+                        border: 2px solid #DDD;
                         background: ${theme.background};
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        font-size: 1rem;
+                        width: 1.25rem;
+                        height: 1.25rem;
+                        font-size: 0.75rem;
                         text-align: center;
-                        color: ${theme.accent};
+                        color: #666;
                         text-decoration: none;
                         position: absolute;
                         top: 0;
                         right: 0;
-                        transition: all 0.2s ease;
                         cursor: pointer;
                        "
                        onmouseover="
-                        this.style.background='${theme.accent}';
-                        this.style.color='${theme.background}';
-                        this.style.transform='scale(1.1)';
-                        this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.2)';
+                        this.style.color='${theme.accent}';
+                        this.style.borderColor='${theme.accent}';
                        "
                        onmouseout="
-                        this.style.background='${theme.background}';
-                        this.style.color='${theme.accent}';
-                        this.style.transform='scale(1)';
-                        this.style.boxShadow='none';
-                       ">ℹ️</a>
+                        this.style.color='#666';
+                        this.style.borderColor='#DDD';
+                       ">?</a>
                 </div>
                 
                 <div style="
