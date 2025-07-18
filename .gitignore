@@ -2,6 +2,7 @@ node_modules
 dist
 functions
 yarn-error.log
+*swp
 
 # Local Netlify folder
 .netlify

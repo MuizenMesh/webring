@@ -2,7 +2,7 @@
     "title": "MuizenMesh Webring",
     "description": "MuizenMesh Communities, including Muizenberg, Capricorn, Vrygrond",
     "image": "surfer.jpg",
-    "url": "https://meshring.netlify.app/",
+    "url": "https://meshring.netlify.app",
     "repo": "https://github.com/MuizenMesh/webring",
     "admins": [
         {
