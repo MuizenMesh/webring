@@ -30,7 +30,7 @@ layout: base
     </p>
 
     <h3>HTML Embed (Recommended)</h3>
-    <p>Copy this code snippet into your site. <a href="/html-css-demo/" target="_blank">View CSS themes demo</a> for styling options.</p>
+    <p>Copy this code snippet into your site:</p>
 
     {% highlight 'html' %}{% include 'snippet.njk' %}{% endhighlight %}
 
@@ -39,6 +39,19 @@ layout: base
     </p>
 
     {% include 'snippet.njk' %}
+
+    <h4>🎨 Style with CSS Themes</h4>
+    <p>
+        Customize your webring banner with our CSS themes - no React or build tools required! 
+        Choose from Ocean, Sunset, Dark, or Minimal themes.
+        <a href="/html-css-demo/" target="_blank">View the CSS themes demo</a> to see all options and get the code.
+    </p>
+    
+    <p><strong>Quick example:</strong></p>
+    {% highlight 'html' %}<link rel="stylesheet" href="webring-theme-ocean.css">
+<webring-banner class="theme-ocean">
+    <!-- your webring content -->
+</webring-banner>{% endhighlight %}
 
     <h3>React/TypeScript Widget</h3>
     <p>

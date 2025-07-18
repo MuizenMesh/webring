@@ -14,9 +14,12 @@ Uses [Eleventy](https://www.11ty.io) and [Netlify](https://www.netlify.com/) to 
 * Member sites defined in `src/data/members.json`
 * Join the ring by submitting a pull request or using our email form
 * Community code of conduct
-* Embed code for member sites (renders as a web component)
+* **Multiple embed options:**
+  - HTML embed with CSS themes (Ocean, Sunset, Dark, Minimal)
+  - React/TypeScript widget with 5 themes and 3 sizes
 * RSS feed index of all member sites
 * Interactive SVG map showing ring members
+* Live demos for both HTML/CSS and React implementations
 
 ## Visit the Webring
 
@@ -56,6 +59,24 @@ Copy this code snippet and embed it into your site:
 ```
 
 The banner renders as a web component with fallback links for better accessibility.
+
+#### CSS Themes for HTML Embed
+
+Style your webring banner with our CSS themes - no React or build tools required:
+
+```html
+<!-- Add a theme CSS file -->
+<link rel="stylesheet" href="webring-theme-ocean.css">
+
+<!-- Add theme class to your banner -->
+<webring-banner class="theme-ocean">
+    <!-- webring content -->
+</webring-banner>
+```
+
+**Available themes:** Ocean, Sunset, Dark, Minimal  
+**Demo:** [HTML/CSS Themes Demo](https://meshring.netlify.app/html-css-demo/)  
+**Files:** [html-demo/themes/](html-demo/themes/)
 
 ### React/TypeScript Widget
 
