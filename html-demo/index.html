@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuizenMesh Webring HTML/CSS Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌐 MuizenMesh Webring HTML/CSS Demo</h1>
+            <p>Style your webring banner with pure HTML, CSS, and JavaScript</p>
+        </header>
+
+        <div class="intro">
+            <h2>📋 How to Use</h2>
+            <p>
+                Copy the basic HTML embed code, then add one of our CSS themes to customize the appearance. 
+                No React or build tools required - just HTML, CSS, and JavaScript!
+            </p>
+            
+            <div class="code-block">
+                <h3>1. Basic HTML Embed</h3>
+                <pre><code>&lt;webring-banner&gt;
+    &lt;p&gt;Member of &lt;a href="https://meshring.netlify.app/"&gt;MuizenMesh Webring&lt;/a&gt;&lt;/p&gt;
+    &lt;a href="https://meshring.netlify.app/prev"&gt;Previous&lt;/a&gt;
+    &lt;a href="https://meshring.netlify.app/random"&gt;Random&lt;/a&gt;
+    &lt;a href="https://meshring.netlify.app/next"&gt;Next&lt;/a&gt;
+&lt;/webring-banner&gt;
+&lt;script async src="https://meshring.netlify.app/embed.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="code-block">
+                <h3>2. Add Custom CSS Theme</h3>
+                <p>Include one of the CSS files below to style your webring banner:</p>
+                <pre><code>&lt;link rel="stylesheet" href="webring-theme-ocean.css"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>🎯 Default Theme</h3>
+                <p>Clean design with the standard webring styling</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-default">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>/* No additional CSS needed - uses default styling */</code></pre>
+                </details>
+            </div>
+
+            <div class="demo-card">
+                <h3>🌊 Ocean Theme</h3>
+                <p>Blue ocean-inspired colors perfect for coastal communities</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-ocean">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>.theme-ocean {
+  --webring-bg: #e3f2fd;
+  --webring-border: #90caf9;
+  --webring-text: #0d47a1;
+  --webring-accent: #1976d2;
+}</code></pre>
+                </details>
+            </div>
+
+            <div class="demo-card">
+                <h3>🌅 Sunset Theme</h3>
+                <p>Warm orange and yellow colors like a beach sunset</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-sunset">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>.theme-sunset {
+  --webring-bg: #fff3e0;
+  --webring-border: #ffcc02;
+  --webring-text: #e65100;
+  --webring-accent: #ff9800;
+}</code></pre>
+                </details>
+            </div>
+
+            <div class="demo-card">
+                <h3>🌙 Dark Theme</h3>
+                <p>Dark background with cyan accents for modern sites</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-dark">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>.theme-dark {
+  --webring-bg: #212529;
+  --webring-border: #495057;
+  --webring-text: #f8f9fa;
+  --webring-accent: #0dcaf0;
+}</code></pre>
+                </details>
+            </div>
+
+            <div class="demo-card">
+                <h3>🎨 Minimal Theme</h3>
+                <p>Clean gray styling for minimal designs</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-minimal">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>.theme-minimal {
+  --webring-bg: #ffffff;
+  --webring-border: #e9ecef;
+  --webring-text: #6c757d;
+  --webring-accent: #343a40;
+}</code></pre>
+                </details>
+            </div>
+
+            <div class="demo-card">
+                <h3>🎪 Custom Theme</h3>
+                <p>Create your own theme with CSS custom properties</p>
+                <div class="widget-container">
+                    <webring-banner class="theme-custom">
+                        <p>Member of <a href="https://meshring.netlify.app/">MuizenMesh Webring</a></p>
+                        <a href="https://meshring.netlify.app/prev">Previous</a>
+                        <a href="https://meshring.netlify.app/random">Random</a>
+                        <a href="https://meshring.netlify.app/next">Next</a>
+                    </webring-banner>
+                </div>
+                <details class="code-details">
+                    <summary>View CSS Code</summary>
+                    <pre><code>.theme-custom {
+  --webring-bg: #f0f8ff;
+  --webring-border: #9370db;
+  --webring-text: #4b0082;
+  --webring-accent: #8a2be2;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+}</code></pre>
+                </details>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2>📦 Download Theme Files</h2>
+            <p>Download individual CSS files for each theme:</p>
+            <div class="download-grid">
+                <a href="themes/webring-theme-ocean.css" download class="download-btn">🌊 Ocean Theme CSS</a>
+                <a href="themes/webring-theme-sunset.css" download class="download-btn">🌅 Sunset Theme CSS</a>
+                <a href="themes/webring-theme-dark.css" download class="download-btn">🌙 Dark Theme CSS</a>
+                <a href="themes/webring-theme-minimal.css" download class="download-btn">🎨 Minimal Theme CSS</a>
+                <a href="themes/webring-all-themes.css" download class="download-btn">📦 All Themes CSS</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>
+                Part of the <a href="https://meshring.netlify.app/">MuizenMesh Webring</a> • 
+                <a href="https://github.com/MuizenMesh/webring">View on GitHub</a> •
+                <a href="/demo/">React Widget Demo</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://meshring.netlify.app/embed.js"></script>
+</body>
+</html>
