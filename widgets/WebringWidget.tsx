@@ -12,6 +12,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
   className = '',
   showDescription = true
 }) => {
+  const [showTooltip, setShowTooltip] = React.useState(false);
   const currentTheme = webringThemes[theme] || webringThemes.default;
   
   const getSizeClass = () => {
@@ -62,16 +63,27 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
           )}
         </div>
         
-        <a 
-          href="https://en.wikipedia.org/wiki/Webring"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.webringInfo}
-          data-tooltip="Learn more about webrings on Wikipedia"
-          aria-label="Learn more about webrings on Wikipedia"
-        >
-          ?
-        </a>
+        <span className={styles.webringInfoContainer}>
+          <a 
+            href="https://en.wikipedia.org/wiki/Webring"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.webringInfo}
+            aria-label="Learn more about webrings on Wikipedia"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
+          >
+            ?
+          </a>
+          {showTooltip && (
+            <div className={styles.webringTooltip}>
+              Learn more about webrings on Wikipedia
+              <div className={styles.webringTooltipArrow}></div>
+            </div>
+          )}
+        </span>
       </div>
       <div className={styles.webringNavigation}>
         <a href={`${webringUrl}/prev`} className={styles.webringLink}>

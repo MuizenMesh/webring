@@ -89,6 +89,12 @@
   color: var(--webring-text, #495057);
 }
 
+.webringInfoContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .webringInfo {
   display: flex;
   justify-content: center;
@@ -102,9 +108,6 @@
   text-align: center;
   color: #666;
   text-decoration: none;
-  position: absolute;
-  top: 0;
-  right: 0;
   cursor: pointer;
 }
 
@@ -115,9 +118,7 @@
   text-decoration: none;
 }
 
-/* Custom tooltip styling */
-.webringInfo::after {
-  content: attr(data-tooltip);
+.webringTooltip {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
@@ -127,17 +128,13 @@
   border-radius: 1rem;
   font-size: 0.75rem;
   white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
   z-index: 10000;
   pointer-events: none;
+  animation: tooltipFadeIn 0.3s ease;
 }
 
-.webringInfo::before {
-  content: '';
+.webringTooltipArrow {
   position: fixed;
   top: 3.25rem;
   right: 2.25rem;
@@ -146,20 +143,19 @@
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid var(--webring-accent, #0d6efd);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
   z-index: 10000;
   pointer-events: none;
 }
 
-.webringInfo:hover::after,
-.webringInfo:focus::after,
-.webringInfo:hover::before,
-.webringInfo:focus::before {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .webringNavigation {
