@@ -82,12 +82,14 @@ class WebringWidget {
         const imageSize = this.options.size === 'small' ? 40 : 
                          this.options.size === 'large' ? 80 : 60;
         
+        const tooltipId = 'tooltip-' + Math.random().toString(36).substr(2, 9);
+        
         this.container.innerHTML = `
             <div class="webring-widget ${sizeClass}" style="
                 background: ${theme.background};
                 border: 1px solid ${theme.border};
                 color: ${theme.text};
-                border-radius: 0.375rem;
+                border-radius: 8px;
                 padding: ${this.options.size === 'small' ? '0.75rem' : 
                           this.options.size === 'large' ? '1.25rem' : '1rem'};
                 text-align: center;
@@ -96,6 +98,8 @@ class WebringWidget {
                 font-size: ${this.options.size === 'small' ? '0.875rem' : 
                             this.options.size === 'large' ? '1.125rem' : '1rem'};
                 position: relative;
+                max-width: 480px;
+                box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
             ">
                 <h3 style="
                     font-size: 1.1rem;
@@ -192,7 +196,8 @@ class WebringWidget {
                        onmouseout="
                         this.style.color='#666';
                         this.style.borderColor='#DDD';
-                       ">?</a>
+                       "
+                       title="Learn more about webrings on Wikipedia">?</a>
                 </div>
                 
                 <div style="
