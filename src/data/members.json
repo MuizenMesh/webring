@@ -7,7 +7,7 @@
     {
         "title": "MuizenMesh",
         "url": "https://muizenmesh.co.za",
-        "feed": "#"
+        "feed": null
     },
     {
 	"title": "MuizeMesh Communities",
@@ -17,7 +17,7 @@
     {
  	"title": "Muizenberg Electricity CC",
 	"url": "https://mecc.org.za",
-	"feed": "#"
+	"feed": null
     },
     {
 	"title": "MECC Blog",
@@ -27,6 +27,6 @@
    {
 	"title": "Netbones Solutions",
        	"url": "https://netbones.co.za",
-	"feed": "#"	
+	"feed": null	
    }
 ]

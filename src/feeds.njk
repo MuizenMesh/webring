@@ -9,7 +9,7 @@ permalink: feeds.xml
     </head>
     <body>
     {% for member in members %}
-        {% if member.feed %}
+        {% if member.feed and member.feed != "#" and member.feed != "" %}
         <outline type="rss" text="{{ member.title }}" title="{{ member.title }}" xmlUrl="{{ member.feed }}" htmlUrl="{{ member.url }}" />
         {% endif %}
     {% endfor %}
