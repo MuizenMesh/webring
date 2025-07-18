@@ -1,0 +1,138 @@
+---
+layout: page
+title: Widget Demo
+---
+
+<div class="markdown">
+    <h1>🎨 MuizenMesh Webring Widget Demo</h1>
+    <p>
+        Explore different themes and configurations for the React/TypeScript widget. 
+        This interactive demo shows all available options for integrating the MuizenMesh Webring into your projects.
+    </p>
+    
+    <p>
+        <strong>📁 Demo Files:</strong> 
+        <a href="https://github.com/MuizenMesh/webring/tree/main/demo" target="_blank">View on GitHub</a> | 
+        <a href="/demo/index.html" target="_blank">Open Standalone Demo</a>
+    </p>
+
+    <h2>🚀 Quick Start</h2>
+    <p>Copy the widget files to your React project:</p>
+    
+    {% highlight 'bash' %}
+npm install react next
+
+# Copy these files to your project:
+# - widgets/WebringWidget.tsx
+# - widgets/WebringWidget.module.css  
+# - widgets/types.ts
+    {% endhighlight %}
+
+    <h2>🎨 Available Themes</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🎯 Default Theme</h3>
+            <p>Clean blue design with classic styling</p>
+            {% highlight 'tsx' %}
+<WebringWidget title="Community Links" />
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🎨 Minimal Theme</h3>
+            <p>Subtle gray styling for minimal designs</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  theme="minimal" 
+  size="small" 
+  showDescription={false}
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🌊 Ocean Theme</h3>
+            <p>Blue ocean-inspired colors</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="MuizenMesh Community"
+  theme="ocean" 
+  size="large"
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🌅 Sunset Theme</h3>
+            <p>Warm orange and yellow colors</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="Community Sites"
+  theme="sunset" 
+  showImage={false}
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🌙 Dark Theme</h3>
+            <p>Dark background with cyan accents</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="MuizenMesh Webring"
+  theme="dark"
+/>
+            {% endhighlight %}
+        </div>
+    </div>
+
+    <h2>📏 Size Variants</h2>
+    <ul>
+        <li><strong>Small:</strong> Compact version perfect for sidebars</li>
+        <li><strong>Medium:</strong> Standard size (default)</li>
+        <li><strong>Large:</strong> Larger with more padding</li>
+    </ul>
+
+    <h2>🔧 Props</h2>
+    <p>All props are optional with sensible defaults:</p>
+    
+    {% highlight 'tsx' %}
+interface WebringWidgetProps {
+  title?: string;           // Custom title (default: "Webring")
+  webringUrl?: string;      // Webring URL (default: "https://meshring.netlify.app")
+  theme?: 'default' | 'minimal' | 'ocean' | 'sunset' | 'dark';
+  size?: 'small' | 'medium' | 'large';
+  showImage?: boolean;      // Show surfer logo (default: true)
+  showDescription?: boolean; // Show description text (default: true)
+  className?: string;       // Additional CSS class
+}
+    {% endhighlight %}
+
+    <h2>📚 Documentation</h2>
+    <p>
+        For complete documentation, installation instructions, and more examples:
+    </p>
+    <ul>
+        <li><a href="https://github.com/MuizenMesh/webring/blob/main/widgets/README.md" target="_blank">Widget Documentation</a></li>
+        <li><a href="https://github.com/MuizenMesh/webring/blob/main/widgets/examples.tsx" target="_blank">Usage Examples</a></li>
+        <li><a href="/demo/index.html" target="_blank">Interactive Demo</a></li>
+    </ul>
+
+    <div style="background: #f8f9fa; border-radius: 8px; padding: 2rem; margin: 2rem 0; text-align: center;">
+        <h3>🎮 Try the Interactive Demo</h3>
+        <p>See all themes and configurations in action with hover effects and responsive design.</p>
+        <p>
+            <a href="/demo/index.html" target="_blank" style="
+                display: inline-block;
+                background: #0d6efd;
+                color: white;
+                padding: 0.75rem 1.5rem;
+                text-decoration: none;
+                border-radius: 0.375rem;
+                font-weight: 600;
+                margin: 0.5rem;
+            ">Open Interactive Demo →</a>
+        </p>
+    </div>
+</div>
