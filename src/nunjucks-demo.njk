@@ -1,0 +1,266 @@
+---
+layout: page
+title: Nunjucks Demo
+---
+
+<div class="markdown">
+    <h1>🎨 Nunjucks Templating Demo</h1>
+    <p>
+        This page demonstrates advanced Nunjucks templating features using our MuizenMesh Webring data.
+        Nunjucks is much more than basic templating - it's a powerful template engine!
+    </p>
+
+    <h2>📊 Basic Data & Statistics</h2>
+    
+    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
+        <div class="stat-card" style="background: #e3f2fd; padding: 1rem; border-radius: 8px; text-align: center;">
+            <h3 style="margin: 0; color: #1976d2;">{{ members | length }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: #0d47a1;">Total Members</p>
+        </div>
+        
+        <div class="stat-card" style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center;">
+            {% set membersWithFeeds = members | selectattr('feed') | list %}
+            <h3 style="margin: 0; color: #ff9800;">{{ membersWithFeeds | length }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: #e65100;">With RSS Feeds</p>
+        </div>
+        
+        <div class="stat-card" style="background: #f3e5f5; padding: 1rem; border-radius: 8px; text-align: center;">
+            {% set feedPercentage = ((membersWithFeeds | length) / (members | length) * 100) | round %}
+            <h3 style="margin: 0; color: #9c27b0;">{{ feedPercentage }}%</h3>
+            <p style="margin: 0.5rem 0 0 0; color: #6a1b9a;">Feed Coverage</p>
+        </div>
+        
+        <div class="stat-card" style="background: #e8f5e8; padding: 1rem; border-radius: 8px; text-align: center;">
+            {% set southAfricanSites = members | selectattr('url', 'match', '.*\\.co\\.za.*') | list %}
+            <h3 style="margin: 0; color: #4caf50;">{{ southAfricanSites | length }}</h3>
+            <p style="margin: 0.5rem 0 0 0; color: #2e7d32;">.co.za Sites</p>
+        </div>
+    </div>
+
+    <h2>🔄 Loops & Conditionals</h2>
+    
+    <h3>Members by Feed Status</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1rem 0;">
+        <div>
+            <h4 style="color: #4caf50;">✅ Members with RSS Feeds</h4>
+            <ul>
+                {% for member in members %}
+                    {% if member.feed %}
+                        <li>
+                            <strong>{{ member.title }}</strong>
+                            <br><small><a href="{{ member.feed }}" target="_blank">{{ member.feed }}</a></small>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div>
+            <h4 style="color: #ff9800;">📝 Members without RSS Feeds</h4>
+            <ul>
+                {% for member in members %}
+                    {% if not member.feed %}
+                        <li>
+                            <strong>{{ member.title }}</strong>
+                            <br><small><a href="{{ member.url }}" target="_blank">{{ member.url }}</a></small>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <h2>🎯 Advanced Filtering & Sorting</h2>
+    
+    <h3>Members Sorted by Title (A-Z)</h3>
+    <ol>
+        {% for member in members | sort(attribute='title') %}
+            <li>
+                <a href="{{ member.url }}" target="_blank">{{ member.title }}</a>
+                {% if member.feed %}
+                    <span style="color: #4caf50; font-size: 0.8em;">📡 RSS</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+
+    <h3>Domain Analysis</h3>
+    {% set domainCounts = {} %}
+    {% for member in members %}
+        {% set domain = member.url | replace('https://', '') | replace('http://', '') | split('/')[0] %}
+        {% if domainCounts[domain] %}
+            {% set domainCounts = domainCounts | merge({[domain]: domainCounts[domain] + 1}) %}
+        {% else %}
+            {% set domainCounts = domainCounts | merge({[domain]: 1}) %}
+        {% endif %}
+    {% endfor %}
+    
+    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+        <h4>Sites by Domain:</h4>
+        <ul>
+            {% for domain, count in domainCounts %}
+                <li>
+                    <strong>{{ domain }}</strong>: {{ count }} site{{ 's' if count > 1 else '' }}
+                    {% if count > 1 %}
+                        <span style="color: #ff9800;">🔥</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>🧮 Mathematical Operations</h2>
+    
+    <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+        <h4>📈 Community Growth Projections</h4>
+        <p><strong>Current members:</strong> {{ members | length }}</p>
+        <p><strong>If we grow 20% monthly:</strong></p>
+        <ul>
+            {% for month in range(1, 7) %}
+                {% set projected = (members | length * (1.2 ** month)) | round %}
+                <li>Month {{ month }}: ~{{ projected }} members</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>🎨 Dynamic Styling</h2>
+    
+    <h3>Member Cards with Dynamic Themes</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0;">
+        {% set themes = [
+            {name: 'ocean', bg: '#e3f2fd', border: '#1976d2', text: '#0d47a1'},
+            {name: 'sunset', bg: '#fff3e0', border: '#ff9800', text: '#e65100'},
+            {name: 'forest', bg: '#e8f5e8', border: '#4caf50', text: '#2e7d32'},
+            {name: 'purple', bg: '#f3e5f5', border: '#9c27b0', text: '#6a1b9a'}
+        ] %}
+        
+        {% for member in members %}
+            {% set theme = themes[loop.index0 % themes|length] %}
+            <div style="
+                background: {{ theme.bg }};
+                border: 2px solid {{ theme.border }};
+                border-radius: 8px;
+                padding: 1rem;
+                color: {{ theme.text }};
+            ">
+                <h4 style="margin: 0 0 0.5rem 0; color: {{ theme.border }};">{{ member.title }}</h4>
+                <p style="margin: 0; font-size: 0.9em;">
+                    <a href="{{ member.url }}" target="_blank" style="color: {{ theme.text }};">Visit Site</a>
+                    {% if member.feed %}
+                        • <a href="{{ member.feed }}" target="_blank" style="color: {{ theme.border }};">RSS Feed</a>
+                    {% endif %}
+                </p>
+                <small style="opacity: 0.7;">Theme: {{ theme.name | title }}</small>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>🔤 String Manipulation</h2>
+    
+    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+        <h4>Text Transformations:</h4>
+        {% for member in members | first(3) %}
+            <div style="margin: 1rem 0; padding: 0.5rem; background: white; border-radius: 4px;">
+                <p><strong>Original:</strong> {{ member.title }}</p>
+                <p><strong>UPPERCASE:</strong> {{ member.title | upper }}</p>
+                <p><strong>lowercase:</strong> {{ member.title | lower }}</p>
+                <p><strong>Title Case:</strong> {{ member.title | title }}</p>
+                <p><strong>Truncated (15 chars):</strong> {{ member.title | truncate(15) }}</p>
+                <p><strong>Slug:</strong> {{ member.title | lower | replace(' ', '-') | replace('&', 'and') }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>📅 Conditional Logic</h2>
+    
+    <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+        <h4>Community Size Assessment:</h4>
+        {% if members | length >= 10 %}
+            <p style="color: #4caf50; font-weight: bold;">🎉 Large Community! We have {{ members | length }} members - that's fantastic growth!</p>
+        {% elif members | length >= 5 %}
+            <p style="color: #ff9800; font-weight: bold;">🌱 Growing Community! {{ members | length }} members and counting!</p>
+        {% else %}
+            <p style="color: #2196f3; font-weight: bold;">🌟 Small but Mighty! {{ members | length }} quality members in our community.</p>
+        {% endif %}
+        
+        <h4>Feed Adoption Rate:</h4>
+        {% if feedPercentage >= 70 %}
+            <p style="color: #4caf50;">📡 Excellent RSS adoption! {{ feedPercentage }}% of members have feeds.</p>
+        {% elif feedPercentage >= 40 %}
+            <p style="color: #ff9800;">📊 Good RSS adoption at {{ feedPercentage }}%. Room for improvement!</p>
+        {% else %}
+            <p style="color: #f44336;">📈 Low RSS adoption ({{ feedPercentage }}%). Let's encourage more feeds!</p>
+        {% endif %}
+    </div>
+
+    <h2>🔧 Custom Macros</h2>
+    
+    {% macro memberBadge(member, style='default') %}
+        {% set styles = {
+            'default': {bg: '#e3f2fd', color: '#1976d2'},
+            'success': {bg: '#e8f5e8', color: '#4caf50'},
+            'warning': {bg: '#fff3e0', color: '#ff9800'},
+            'info': {bg: '#f3e5f5', color: '#9c27b0'}
+        } %}
+        {% set currentStyle = styles[style] or styles.default %}
+        
+        <span style="
+            display: inline-block;
+            background: {{ currentStyle.bg }};
+            color: {{ currentStyle.color }};
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        ">
+            {{ member.title }}
+            {% if member.feed %}📡{% endif %}
+        </span>
+    {% endmacro %}
+    
+    <h4>Member Badges (Using Custom Macro):</h4>
+    <div style="margin: 1rem 0;">
+        {% for member in members %}
+            {% if member.feed %}
+                {{ memberBadge(member, 'success') }}
+            {% else %}
+                {{ memberBadge(member, 'warning') }}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h2>📋 Summary</h2>
+    
+    <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+        <h4>🎯 What This Demo Shows:</h4>
+        <ul>
+            <li><strong>Data Processing:</strong> Filtering, sorting, and mathematical operations</li>
+            <li><strong>Conditional Logic:</strong> Complex if/else statements and comparisons</li>
+            <li><strong>Loops & Iteration:</strong> Advanced looping with counters and context</li>
+            <li><strong>String Manipulation:</strong> Text transformations and formatting</li>
+            <li><strong>Dynamic Styling:</strong> CSS generation based on data</li>
+            <li><strong>Custom Macros:</strong> Reusable template components</li>
+            <li><strong>Mathematical Operations:</strong> Calculations and projections</li>
+            <li><strong>Advanced Filters:</strong> Built-in and custom data filtering</li>
+        </ul>
+        
+        <p style="margin-top: 1rem; font-style: italic;">
+            Nunjucks is much more than basic templating - it's a full-featured template engine 
+            that can handle complex data processing, dynamic content generation, and sophisticated 
+            presentation logic!
+        </p>
+    </div>
+
+    <div style="text-align: center; margin: 2rem 0;">
+        <a href="/" style="
+            display: inline-block;
+            background: #1976d2;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        ">← Back to Webring</a>
+    </div>
+</div>
