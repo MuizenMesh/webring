@@ -74,14 +74,17 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
             onMouseLeave={() => setShowTooltip(false)}
             onFocus={() => setShowTooltip(true)}
             onBlur={() => setShowTooltip(false)}
+            title="" // Disable browser tooltip
           >
             ?
           </a>
           {showTooltip && (
-            <div className={styles.webringTooltip}>
-              Learn more about webrings on Wikipedia
+            <>
+              <div className={styles.webringTooltip}>
+                Learn more about webrings on Wikipedia
+              </div>
               <div className={styles.webringTooltipArrow}></div>
-            </div>
+            </>
           )}
         </span>
       </div>

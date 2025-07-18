@@ -147,6 +147,7 @@
   border-top: 5px solid var(--webring-accent, #0d6efd);
   z-index: 1000;
   pointer-events: none;
+  animation: tooltipFadeIn 0.3s ease;
 }
 
 @keyframes tooltipFadeIn {

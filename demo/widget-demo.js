@@ -196,8 +196,53 @@ class WebringWidget {
                        onmouseout="
                         this.style.color='#666';
                         this.style.borderColor='#DDD';
+                        document.getElementById('${tooltipId}').style.opacity='0';
+                        document.getElementById('${tooltipId}').style.visibility='hidden';
+                        document.getElementById('${tooltipId}Arrow').style.opacity='0';
+                        document.getElementById('${tooltipId}Arrow').style.visibility='hidden';
                        "
-                       title="Learn more about webrings on Wikipedia">?</a>
+                       onmouseover="
+                        this.style.color='${theme.accent}';
+                        this.style.borderColor='${theme.accent}';
+                        document.getElementById('${tooltipId}').style.opacity='1';
+                        document.getElementById('${tooltipId}').style.visibility='visible';
+                        document.getElementById('${tooltipId}Arrow').style.opacity='1';
+                        document.getElementById('${tooltipId}Arrow').style.visibility='visible';
+                       ">?</a>
+                    
+                    <div id="${tooltipId}" style="
+                        position: absolute;
+                        bottom: 130%;
+                        right: 0;
+                        background: linear-gradient(135deg, ${theme.accent}, #6610f2);
+                        color: white;
+                        padding: 0.5rem 0.75rem;
+                        border-radius: 1rem;
+                        font-size: 0.75rem;
+                        white-space: nowrap;
+                        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+                        z-index: 1000;
+                        pointer-events: none;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.3s ease;
+                    ">Learn more about webrings on Wikipedia</div>
+                    
+                    <div id="${tooltipId}Arrow" style="
+                        position: absolute;
+                        bottom: 120%;
+                        right: 0.75rem;
+                        width: 0;
+                        height: 0;
+                        border-left: 5px solid transparent;
+                        border-right: 5px solid transparent;
+                        border-top: 5px solid ${theme.accent};
+                        z-index: 1000;
+                        pointer-events: none;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.3s ease;
+                    "></div>
                 </div>
                 
                 <div style="
