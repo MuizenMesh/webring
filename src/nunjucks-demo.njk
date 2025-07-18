@@ -85,17 +85,6 @@ title: Nunjucks Demo
     </ol>
 
     <h3>Domain Analysis</h3>
-    {% set domainCounts = {} %}
-    {% for member in members %}
-        {% set cleanUrl = member.url | replace('https://', '') | replace('http://', '') %}
-        {% set urlParts = cleanUrl.split('/') %}
-        {% set domain = urlParts[0] %}
-        {% if domain in domainCounts %}
-            {% set domainCounts = domainCounts | merge({[domain]: domainCounts[domain] + 1}) %}
-        {% else %}
-            {% set domainCounts = domainCounts | merge({[domain]: 1}) %}
-        {% endif %}
-    {% endfor %}
     
     <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>Sites by Domain:</h4>
