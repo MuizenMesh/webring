@@ -12,6 +12,26 @@ title: Nunjucks Demo
 
     <h2>📊 Basic Data & Statistics</h2>
     
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Statistics Calculations</summary>
+        {% highlight 'njk' %}
+<!-- Member count -->
+{{ members | length }}
+
+<!-- Members with feeds -->
+{% set membersWithFeeds = members | selectattr('feed') | list %}
+{{ membersWithFeeds | length }}
+
+<!-- Percentage calculation -->
+{% set feedPercentage = ((membersWithFeeds | length) / (members | length) * 100) | round %}
+{{ feedPercentage }}%
+
+<!-- Pattern matching -->
+{% set southAfricanSites = members | selectattr('url', 'match', '.*\\.co\\.za.*') | list %}
+{{ southAfricanSites | length }}
+        {% endhighlight %}
+    </details>
+    
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
         <div class="stat-card" style="background: #e3f2fd; padding: 1rem; border-radius: 8px; text-align: center;">
             <h3 style="margin: 0; color: #1976d2;">{{ members | length }}</h3>
@@ -38,6 +58,25 @@ title: Nunjucks Demo
     </div>
 
     <h2>🔄 Loops & Conditionals</h2>
+    
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Conditional Loops</summary>
+        {% highlight 'njk' %}
+<!-- Loop with conditional -->
+{% for member in members %}
+    {% if member.feed %}
+        <li>{{ member.title }} - Has RSS Feed</li>
+    {% else %}
+        <li>{{ member.title }} - No RSS Feed</li>
+    {% endif %}
+{% endfor %}
+
+<!-- Alternative: Filter first, then loop -->
+{% for member in members | selectattr('feed') %}
+    <li>{{ member.title }} - {{ member.feed }}</li>
+{% endfor %}
+        {% endhighlight %}
+    </details>
     
     <h3>Members by Feed Status</h3>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1rem 0;">
@@ -72,6 +111,26 @@ title: Nunjucks Demo
 
     <h2>🎯 Advanced Filtering & Sorting</h2>
     
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Sorting and Filtering</summary>
+        {% highlight 'njk' %}
+<!-- Sort by attribute -->
+{% for member in members | sort(attribute='title') %}
+    <li>{{ member.title }}</li>
+{% endfor %}
+
+<!-- Filter and sort combined -->
+{% for member in members | selectattr('feed') | sort(attribute='title') %}
+    <li>{{ member.title }} - {{ member.feed }}</li>
+{% endfor %}
+
+<!-- Reverse sorting -->
+{% for member in members | sort(attribute='title', reverse=true) %}
+    <li>{{ member.title }}</li>
+{% endfor %}
+        {% endhighlight %}
+    </details>
+    
     <h3>Members Sorted by Title (A-Z)</h3>
     <ol>
         {% for member in members | sort(attribute='title') %}
@@ -99,6 +158,28 @@ title: Nunjucks Demo
 
     <h2>🧮 Mathematical Operations</h2>
     
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Mathematical Calculations</summary>
+        {% highlight 'njk' %}
+<!-- Basic math -->
+{{ members | length * 2 }}
+
+<!-- Growth projections -->
+{% for month in range(1, 7) %}
+    {% set projected = (members | length * (1.2 ** month)) | round %}
+    Month {{ month }}: ~{{ projected }} members
+{% endfor %}
+
+<!-- Percentage calculations -->
+{% set percentage = (value / total * 100) | round(2) %}
+{{ percentage }}%
+
+<!-- Complex calculations -->
+{% set average = (total_value / count) | round(1) %}
+Average: {{ average }}
+        {% endhighlight %}
+    </details>
+    
     <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>📈 Community Growth Projections</h4>
         <p><strong>Current members:</strong> {{ members | length }}</p>
@@ -112,6 +193,33 @@ title: Nunjucks Demo
     </div>
 
     <h2>🎨 Dynamic Styling</h2>
+    
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Dynamic Theme Generation</summary>
+        {% highlight 'njk' %}
+<!-- Define theme array -->
+{% set themes = [
+    {name: 'ocean', bg: '#e3f2fd', border: '#1976d2'},
+    {name: 'sunset', bg: '#fff3e0', border: '#ff9800'}
+] %}
+
+<!-- Apply themes cyclically -->
+{% for member in members %}
+    {% set themeIndex = loop.index0 % themes|length %}
+    {% set theme = themes[themeIndex] %}
+    <div style="background: {{ theme.bg }}; border: 2px solid {{ theme.border }};">
+        {{ member.title }}
+    </div>
+{% endfor %}
+
+<!-- Conditional styling -->
+{% if member.feed %}
+    <span style="color: green;">Has RSS</span>
+{% else %}
+    <span style="color: orange;">No RSS</span>
+{% endif %}
+        {% endhighlight %}
+    </details>
     
     <h3>Member Cards with Dynamic Themes</h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0;">
@@ -145,6 +253,28 @@ title: Nunjucks Demo
     </div>
 
     <h2>🔤 String Manipulation</h2>
+    
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: String Transformations</summary>
+        {% highlight 'njk' %}
+<!-- Text case transformations -->
+{{ title | upper }}           <!-- UPPERCASE -->
+{{ title | lower }}           <!-- lowercase -->
+{{ title | title }}           <!-- Title Case -->
+
+<!-- String manipulation -->
+{{ title | truncate(15) }}    <!-- Truncated text... -->
+{{ title | replace(' ', '-') | lower }}  <!-- URL slug -->
+
+<!-- Advanced string operations -->
+{{ url | replace('https://', '') | split('/')[0] }}  <!-- Extract domain -->
+{{ text | wordcount }}        <!-- Count words -->
+{{ text | reverse }}          <!-- Reverse string -->
+
+<!-- Chaining filters -->
+{{ member.title | lower | replace(' ', '-') | replace('&', 'and') }}
+        {% endhighlight %}
+    </details>
     
     <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>Text Transformations:</h4>
