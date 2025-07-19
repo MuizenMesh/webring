@@ -70,6 +70,39 @@ class WebringWidget {
                 buttonText: '#0dcaf0',
                 buttonHover: '#0dcaf0',
             },
+            tokyo: {
+                background: '#fef7f0',
+                border: '#ff6b9d',
+                text: '#2d1b69',
+                accent: '#ff006e',
+                linkColor: '#ff006e',
+                linkHover: '#d90368',
+                buttonBackground: '#ffffff',
+                buttonText: '#ff006e',
+                buttonHover: '#ff006e',
+            },
+            dracula: {
+                background: '#282a36',
+                border: '#6272a4',
+                text: '#f8f8f2',
+                accent: '#bd93f9',
+                linkColor: '#bd93f9',
+                linkHover: '#ff79c6',
+                buttonBackground: '#44475a',
+                buttonText: '#bd93f9',
+                buttonHover: '#bd93f9',
+            },
+            disco: {
+                background: '#1a0033',
+                border: '#ff00ff',
+                text: '#ffffff',
+                accent: '#00ffff',
+                linkColor: '#00ffff',
+                linkHover: '#ff00ff',
+                buttonBackground: '#330066',
+                buttonText: '#00ffff',
+                buttonHover: '#00ffff',
+            },
         };
         
         this.render();
@@ -331,6 +364,26 @@ document.addEventListener('DOMContentLoaded', function() {
     new WebringWidget(document.getElementById('dark-widget'), {
         title: 'MuizenMesh Webring',
         theme: 'dark'
+    });
+    
+    // Tokyo theme
+    new WebringWidget(document.getElementById('tokyo-widget'), {
+        title: 'Tokyo Webring',
+        theme: 'tokyo'
+    });
+    
+    // Dracula theme
+    new WebringWidget(document.getElementById('dracula-widget'), {
+        title: 'Dark Community',
+        theme: 'dracula',
+        showImage: false
+    });
+    
+    // Disco theme
+    new WebringWidget(document.getElementById('disco-widget'), {
+        title: 'Retro Webring',
+        theme: 'disco',
+        size: 'large'
     });
     
     // Small size

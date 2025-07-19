@@ -25,6 +25,39 @@ function MyComponent() {
 }
 ```
 
+## Setting Themes
+
+The widget supports 9 different themes that you can set using the `theme` prop:
+
+```tsx
+// Default blue theme
+<WebringWidget theme="default" />
+
+// Clean minimal theme
+<WebringWidget theme="minimal" />
+
+// Ocean blue theme
+<WebringWidget theme="ocean" />
+
+// Warm sunset theme
+<WebringWidget theme="sunset" />
+
+// Dark theme with cyan accents
+<WebringWidget theme="dark" />
+
+// Japanese-inspired pink theme
+<WebringWidget theme="tokyo" />
+
+// Dark purple Dracula theme
+<WebringWidget theme="dracula" />
+
+// Retro neon disco theme
+<WebringWidget theme="disco" />
+
+// Random theme (different each time!)
+<WebringWidget theme="random" />
+```
+
 ## Props
 
 All props are optional and have sensible defaults:

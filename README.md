@@ -94,14 +94,14 @@ import WebringWidget from './path/to/WebringWidget';
 ```
 
 Features:
-- **5 Built-in Themes**: Default, Minimal, Ocean, Sunset, Dark
+- **9 Built-in Themes**: Default, Minimal, Ocean, Sunset, Dark, Tokyo, Dracula, Disco, plus Random
 - **3 Size Variants**: Small, Medium, Large
 - **TypeScript Support**: Full type definitions
 - **Responsive Design**: Mobile and desktop friendly
 - **Customizable**: Show/hide elements, custom styling
 - **CSS Modules**: Scoped styling with theme variables
 
-Available themes: `default`, `minimal`, `ocean`, `sunset`, `dark`
+Available themes: `default`, `minimal`, `ocean`, `sunset`, `dark`, `tokyo`, `dracula`, `disco`, `random`
 
 See the [widget documentation](widgets/README.md) for installation, theming, and usage details.
 

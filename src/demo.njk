@@ -86,6 +86,53 @@ npm install react next
 />
             {% endhighlight %}
         </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🌸 Tokyo Theme</h3>
+            <p>Japanese-inspired pink and purple colors</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="Tokyo Webring"
+  theme="tokyo"
+  size="medium"
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🧛 Dracula Theme</h3>
+            <p>Dark purple theme inspired by Dracula colors</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="Dark Community"
+  theme="dracula"
+  showImage={false}
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🕺 Disco Theme</h3>
+            <p>Retro neon colors with cyan and magenta</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="Retro Webring"
+  theme="disco"
+  size="large"
+/>
+            {% endhighlight %}
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 1rem;">
+            <h3>🎲 Random Theme</h3>
+            <p>Randomly selects from all available themes</p>
+            {% highlight 'tsx' %}
+<WebringWidget 
+  title="Surprise Me!"
+  theme="random"
+/>
+            {% endhighlight %}
+        </div>
     </div>
 
     <h2>📏 Size Variants</h2>
@@ -102,7 +149,7 @@ npm install react next
 interface WebringWidgetProps {
   title?: string;           // Custom title (default: "Webring")
   webringUrl?: string;      // Webring URL (default: "https://meshring.netlify.app")
-  theme?: 'default' | 'minimal' | 'ocean' | 'sunset' | 'dark';
+  theme?: 'default' | 'minimal' | 'ocean' | 'sunset' | 'dark' | 'tokyo' | 'dracula' | 'disco' | 'random';
   size?: 'small' | 'medium' | 'large';
   showImage?: boolean;      // Show surfer logo (default: true)
   showDescription?: boolean; // Show description text (default: true)
