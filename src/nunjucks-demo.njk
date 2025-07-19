@@ -148,16 +148,60 @@ title: Nunjucks Demo
     
     <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>Text Transformations:</h4>
-        {% for member in members | first(3) %}
+        <!-- Using direct examples to ensure they always show -->
+        {% set exampleTitles = ['MuizenMesh Webring', 'Medialternatives', 'Muizenberg Electricity CC'] %}
+        {% for title in exampleTitles %}
             <div style="margin: 1rem 0; padding: 0.5rem; background: white; border-radius: 4px;">
-                <p><strong>Original:</strong> {{ member.title }}</p>
-                <p><strong>UPPERCASE:</strong> {{ member.title | upper }}</p>
-                <p><strong>lowercase:</strong> {{ member.title | lower }}</p>
-                <p><strong>Title Case:</strong> {{ member.title | title }}</p>
-                <p><strong>Truncated (15 chars):</strong> {{ member.title | truncate(15) }}</p>
-                <p><strong>Slug:</strong> {{ member.title | lower | replace(' ', '-') | replace('&', 'and') }}</p>
+                <p><strong>Original:</strong> {{ title }}</p>
+                <p><strong>UPPERCASE:</strong> {{ title | upper }}</p>
+                <p><strong>lowercase:</strong> {{ title | lower }}</p>
+                <p><strong>Title Case:</strong> {{ title | title }}</p>
+                <p><strong>Truncated (15 chars):</strong> {{ title | truncate(15) }}</p>
+                <p><strong>Slug:</strong> {{ title | lower | replace(' ', '-') | replace('&', 'and') }}</p>
             </div>
         {% endfor %}
+        
+        <!-- Show member data examples if available -->
+        {% if members | length > 0 %}
+            <h5 style="margin-top: 1.5rem; color: #666;">Live Member Data Examples:</h5>
+            {% for member in members %}
+                {% if loop.index <= 2 %}
+                    <div style="margin: 0.5rem 0; padding: 0.5rem; background: #f0f0f0; border-radius: 4px; font-size: 0.9em;">
+                        <p style="margin: 0;"><strong>{{ member.title }}:</strong> slug = "{{ member.title | lower | replace(' ', '-') | replace('&', 'and') }}"</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Remove old fallback section -->
+        {% if false %}
+            <div style="margin: 1rem 0; padding: 0.5rem; background: white; border-radius: 4px;">
+                <p><strong>Original:</strong> MuizenMesh Webring</p>
+                <p><strong>UPPERCASE:</strong> MUIZENMESH WEBRING</p>
+                <p><strong>lowercase:</strong> muizenmesh webring</p>
+                <p><strong>Title Case:</strong> Muizenmesh Webring</p>
+                <p><strong>Truncated (15 chars):</strong> MuizenMesh Web...</p>
+                <p><strong>Slug:</strong> muizenmesh-webring</p>
+            </div>
+            
+            <div style="margin: 1rem 0; padding: 0.5rem; background: white; border-radius: 4px;">
+                <p><strong>Original:</strong> Medialternatives</p>
+                <p><strong>UPPERCASE:</strong> MEDIALTERNATIVES</p>
+                <p><strong>lowercase:</strong> medialternatives</p>
+                <p><strong>Title Case:</strong> Medialternatives</p>
+                <p><strong>Truncated (15 chars):</strong> Medialternativ...</p>
+                <p><strong>Slug:</strong> medialternatives</p>
+            </div>
+            
+            <div style="margin: 1rem 0; padding: 0.5rem; background: white; border-radius: 4px;">
+                <p><strong>Original:</strong> Muizenberg Electricity CC</p>
+                <p><strong>UPPERCASE:</strong> MUIZENBERG ELECTRICITY CC</p>
+                <p><strong>lowercase:</strong> muizenberg electricity cc</p>
+                <p><strong>Title Case:</strong> Muizenberg Electricity Cc</p>
+                <p><strong>Truncated (15 chars):</strong> Muizenberg Ele...</p>
+                <p><strong>Slug:</strong> muizenberg-electricity-cc</p>
+            </div>
+        {% endif %}
     </div>
 
     <h2>📅 Conditional Logic</h2>
