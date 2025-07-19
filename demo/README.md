@@ -2,6 +2,8 @@
 
 A standalone demo page showcasing all the available themes and configurations for the MuizenMesh Webring React widget.
 
+**Important Note:** This demo uses vanilla JavaScript to simulate the React widget for demonstration purposes. The actual React widget (in the `widgets/` directory) provides better functionality, TypeScript support, state management, and smoother interactions. Use this demo to preview themes and features, then implement the real React component in your project.
+
 ## 🚀 Quick Start
 
 1. Open `index.html` in your web browser
