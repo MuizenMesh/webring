@@ -53,6 +53,24 @@ Clean gray styling for minimal designs
 - **Class:** `theme-minimal`
 - **Colors:** White background, gray accents
 
+### 🌸 Tokyo Theme
+Japanese-inspired pink and purple colors
+- **File:** `themes/webring-theme-tokyo.css`
+- **Class:** `theme-tokyo`
+- **Colors:** Cream background, pink accents
+
+### 🧛 Dracula Theme
+Dark purple theme inspired by Dracula colors
+- **File:** `themes/webring-theme-dracula.css`
+- **Class:** `theme-dracula`
+- **Colors:** Dark gray background, purple accents
+
+### 🕺 Disco Theme
+Retro neon colors with cyan and magenta
+- **File:** `themes/webring-theme-disco.css`
+- **Class:** `theme-disco`
+- **Colors:** Dark purple background, neon accents
+
 ### 📦 All Themes
 All themes in one file for convenience
 - **File:** `themes/webring-all-themes.css`

@@ -37,6 +37,33 @@
     --webring-accent: #343a40 !important;
 }
 
+/* Tokyo Theme - Japanese-inspired pink and purple colors */
+.theme-tokyo,
+.theme-tokyo .webring-banner {
+    --webring-bg: #fef7f0 !important;
+    --webring-border: #ff6b9d !important;
+    --webring-text: #2d1b69 !important;
+    --webring-accent: #ff006e !important;
+}
+
+/* Dracula Theme - Dark purple theme inspired by Dracula colors */
+.theme-dracula,
+.theme-dracula .webring-banner {
+    --webring-bg: #282a36 !important;
+    --webring-border: #6272a4 !important;
+    --webring-text: #f8f8f2 !important;
+    --webring-accent: #bd93f9 !important;
+}
+
+/* Disco Theme - Retro neon colors with cyan and magenta */
+.theme-disco,
+.theme-disco .webring-banner {
+    --webring-bg: #1a0033 !important;
+    --webring-border: #ff00ff !important;
+    --webring-text: #ffffff !important;
+    --webring-accent: #00ffff !important;
+}
+
 /* Apply theme variables to all themed banners */
 [class*="theme-"] .webring-banner,
 [class*="theme-"] {
@@ -68,4 +95,7 @@
    - theme-sunset  
    - theme-dark
    - theme-minimal
+   - theme-tokyo
+   - theme-dracula
+   - theme-disco
 */

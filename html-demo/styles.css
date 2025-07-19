@@ -215,6 +215,30 @@ pre {
 }
 
 /* Custom Theme */
+/* Tokyo Theme */
+.theme-tokyo {
+    --webring-bg: #fef7f0;
+    --webring-border: #ff6b9d;
+    --webring-text: #2d1b69;
+    --webring-accent: #ff006e;
+}
+
+/* Dracula Theme */
+.theme-dracula {
+    --webring-bg: #282a36;
+    --webring-border: #6272a4;
+    --webring-text: #f8f8f2;
+    --webring-accent: #bd93f9;
+}
+
+/* Disco Theme */
+.theme-disco {
+    --webring-bg: #1a0033;
+    --webring-border: #ff00ff;
+    --webring-text: #ffffff;
+    --webring-accent: #00ffff;
+}
+
 .theme-custom {
     --webring-bg: #f0f8ff;
     --webring-border: #9370db;
