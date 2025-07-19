@@ -6,7 +6,7 @@ export interface WebringWidgetProps {
   /** URL of the webring site */
   webringUrl?: string;
   /** Theme variant for the widget */
-  theme?: 'default' | 'minimal' | 'ocean' | 'sunset' | 'dark';
+  theme?: 'default' | 'minimal' | 'ocean' | 'sunset' | 'dark' | 'tokyo' | 'dracula' | 'disco' | 'random';
   /** Size variant for the widget */
   size?: 'small' | 'medium' | 'large';
   /** Whether to show the surfer image */
@@ -101,6 +101,48 @@ export const webringThemes: Record<string, WebringTheme> = {
       buttonBackground: '#343a40',
       buttonText: '#0dcaf0',
       buttonHover: '#0dcaf0',
+    },
+  },
+  tokyo: {
+    name: 'Tokyo',
+    colors: {
+      background: '#fef7f0',
+      border: '#ff6b9d',
+      text: '#2d1b69',
+      accent: '#ff006e',
+      linkColor: '#ff006e',
+      linkHover: '#d90368',
+      buttonBackground: '#ffffff',
+      buttonText: '#ff006e',
+      buttonHover: '#ff006e',
+    },
+  },
+  dracula: {
+    name: 'Dracula',
+    colors: {
+      background: '#282a36',
+      border: '#6272a4',
+      text: '#f8f8f2',
+      accent: '#bd93f9',
+      linkColor: '#bd93f9',
+      linkHover: '#ff79c6',
+      buttonBackground: '#44475a',
+      buttonText: '#bd93f9',
+      buttonHover: '#bd93f9',
+    },
+  },
+  disco: {
+    name: 'Disco',
+    colors: {
+      background: '#1a0033',
+      border: '#ff00ff',
+      text: '#ffffff',
+      accent: '#00ffff',
+      linkColor: '#00ffff',
+      linkHover: '#ff00ff',
+      buttonBackground: '#330066',
+      buttonText: '#00ffff',
+      buttonHover: '#00ffff',
     },
   },
 };

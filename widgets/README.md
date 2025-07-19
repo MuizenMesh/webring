@@ -37,6 +37,10 @@ All props are optional and have sensible defaults:
   - `"ocean"` - Blue ocean-inspired colors
   - `"sunset"` - Warm orange/yellow colors
   - `"dark"` - Dark background with cyan accents
+  - `"tokyo"` - Pink and purple Japanese-inspired colors
+  - `"dracula"` - Dark purple theme inspired by Dracula color scheme
+  - `"disco"` - Retro neon colors with cyan and magenta
+  - `"random"` - Randomly selects one of the above themes
 - `size`: Widget size (default: "medium")
   - `"small"` - Compact version
   - `"medium"` - Standard size

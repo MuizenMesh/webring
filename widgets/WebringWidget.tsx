@@ -17,7 +17,18 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
   const tooltipRef = useRef<HTMLDivElement>(null);
   const infoButtonRef = useRef<HTMLAnchorElement>(null);
   
-  const currentTheme = webringThemes[theme] || webringThemes.default;
+  // Handle random theme selection
+  const getActualTheme = () => {
+    if (theme === 'random') {
+      const availableThemes = ['default', 'minimal', 'ocean', 'sunset', 'dark', 'tokyo', 'dracula', 'disco'];
+      const randomIndex = Math.floor(Math.random() * availableThemes.length);
+      return availableThemes[randomIndex];
+    }
+    return theme;
+  };
+  
+  const actualTheme = getActualTheme();
+  const currentTheme = webringThemes[actualTheme] || webringThemes.default;
   
   const getSizeClass = () => {
     switch (size) {
@@ -75,7 +86,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
 
   return (
     <aside 
-      className={`widget ${styles.webringWidget} ${getSizeClass()} ${styles[`theme-${theme}`]} ${className} ${isKeyboardNav ? styles.keyboardNav : ''}`}
+      className={`widget ${styles.webringWidget} ${getSizeClass()} ${styles[`theme-${actualTheme}`]} ${className} ${isKeyboardNav ? styles.keyboardNav : ''}`}
       style={themeStyles}
       role="complementary"
       aria-labelledby="webring-title"
