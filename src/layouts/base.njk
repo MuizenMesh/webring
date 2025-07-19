@@ -8,36 +8,7 @@
     <title>{{ title or meta.title }}</title>
 
     <link rel="stylesheet" href="{{ '/assets/styles/main.css' | url }}">
-    <style>
-        /* Ocean Theme for webring banner */
-        .theme-ocean {
-            --webring-bg: #e3f2fd;
-            --webring-border: #90caf9;
-            --webring-text: #0d47a1;
-            --webring-accent: #1976d2;
-        }
-        
-        webring-banner.theme-ocean .webring-banner {
-            background-color: var(--webring-bg) !important;
-            border-color: var(--webring-border) !important;
-            color: var(--webring-text) !important;
-        }
-        
-        webring-banner.theme-ocean .webring-banner__title a,
-        webring-banner.theme-ocean .webring-banner__link {
-            color: var(--webring-accent) !important;
-        }
-        
-        webring-banner.theme-ocean .webring-banner__info {
-            border-color: var(--webring-border) !important;
-            color: var(--webring-text) !important;
-        }
-        
-        webring-banner.theme-ocean .webring-banner__info:hover {
-            color: var(--webring-accent) !important;
-            border-color: var(--webring-accent) !important;
-        }
-    </style>
+    <link rel="stylesheet" href="https://meshring.netlify.app/html-css-demo/themes/webring-theme-ocean.css">
     <link rel="stylesheet" href="{{ '/assets/styles/fork-ribbon.css' | url }}">
     <link type="application/atom+xml" rel="alternate" href="feeds.xml" title="{{ meta.title }}">
 </head>
