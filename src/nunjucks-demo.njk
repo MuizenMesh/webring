@@ -14,7 +14,7 @@ title: Nunjucks Demo
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Statistics Calculations</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Member count -->
 {{ members | length }}
 
@@ -29,7 +29,7 @@ title: Nunjucks Demo
 <!-- Pattern matching -->
 {% set southAfricanSites = members | selectattr('url', 'match', '.*\\.co\\.za.*') | list %}
 {{ southAfricanSites | length }}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
@@ -61,7 +61,7 @@ title: Nunjucks Demo
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Conditional Loops</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Loop with conditional -->
 {% for member in members %}
     {% if member.feed %}
@@ -75,7 +75,7 @@ title: Nunjucks Demo
 {% for member in members | selectattr('feed') %}
     <li>{{ member.title }} - {{ member.feed }}</li>
 {% endfor %}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     <h3>Members by Feed Status</h3>
@@ -113,7 +113,7 @@ title: Nunjucks Demo
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Sorting and Filtering</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Sort by attribute -->
 {% for member in members | sort(attribute='title') %}
     <li>{{ member.title }}</li>
@@ -128,7 +128,7 @@ title: Nunjucks Demo
 {% for member in members | sort(attribute='title', reverse=true) %}
     <li>{{ member.title }}</li>
 {% endfor %}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     <h3>Members Sorted by Title (A-Z)</h3>
@@ -160,7 +160,7 @@ title: Nunjucks Demo
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Mathematical Calculations</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Basic math -->
 {{ members | length * 2 }}
 
@@ -177,7 +177,7 @@ title: Nunjucks Demo
 <!-- Complex calculations -->
 {% set average = (total_value / count) | round(1) %}
 Average: {{ average }}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
@@ -198,14 +198,14 @@ Average: {{ average }}
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Dynamic Theme Generation</summary>
         {% highlight 'njk' %}
 <!-- Define theme array -->
-{% set themes = [
+{% raw %}{% set themes = [
     {name: 'ocean', bg: '#e3f2fd', border: '#1976d2'},
     {name: 'sunset', bg: '#fff3e0', border: '#ff9800'}
 ] %}
 
 <!-- Apply themes cyclically -->
 {% for member in members %}
-    {% set themeIndex = loop.index0 % themes|length %}
+    {% set themeIndex = loop.index0 % 2 %}
     {% set theme = themes[themeIndex] %}
     <div style="background: {{ theme.bg }}; border: 2px solid {{ theme.border }};">
         {{ member.title }}
@@ -217,7 +217,7 @@ Average: {{ average }}
     <span style="color: green;">Has RSS</span>
 {% else %}
     <span style="color: orange;">No RSS</span>
-{% endif %}
+{% endif %}{% endraw %}
         {% endhighlight %}
     </details>
     
@@ -256,7 +256,7 @@ Average: {{ average }}
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: String Transformations</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Text case transformations -->
 {{ title | upper }}           <!-- UPPERCASE -->
 {{ title | lower }}           <!-- lowercase -->
@@ -273,7 +273,7 @@ Average: {{ average }}
 
 <!-- Chaining filters -->
 {{ member.title | lower | replace(' ', '-') | replace('&', 'and') }}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
@@ -336,6 +336,35 @@ Average: {{ average }}
 
     <h2>📅 Conditional Logic</h2>
     
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Complex Conditionals</summary>
+        {% highlight 'njk' %}{% raw %}
+<!-- Multi-level conditionals -->
+{% if members | length >= 10 %}
+    <p>Large Community! {{ members | length }} members</p>
+{% elif members | length >= 5 %}
+    <p>Growing Community! {{ members | length }} members</p>
+{% else %}
+    <p>Small but Mighty! {{ members | length }} members</p>
+{% endif %}
+
+<!-- Conditional with calculations -->
+{% set feedPercentage = ((membersWithFeeds | length) / (members | length) * 100) | round %}
+{% if feedPercentage >= 70 %}
+    <p>Excellent RSS adoption! {{ feedPercentage }}%</p>
+{% elif feedPercentage >= 40 %}
+    <p>Good RSS adoption at {{ feedPercentage }}%</p>
+{% else %}
+    <p>Low RSS adoption ({{ feedPercentage }}%)</p>
+{% endif %}
+
+<!-- Inline conditionals -->
+<span class="{{ 'has-feed' if member.feed else 'no-feed' }}">
+    {{ member.title }}
+</span>
+{% endraw %}        {% endhighlight %}
+    </details>
+    
     <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
         <h4>Community Size Assessment:</h4>
         {% if members | length >= 10 %}
@@ -357,6 +386,34 @@ Average: {{ average }}
     </div>
 
     <h2>🔧 Custom Macros</h2>
+    
+    <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Custom Macro Definition</summary>
+        {% highlight 'njk' %}
+<!-- Define a reusable macro -->
+{% macro memberBadge(member, style='default') %}
+    {% if style == 'success' %}
+        {% set bg = '#e8f5e8' %}
+        {% set color = '#4caf50' %}
+    {% elif style == 'warning' %}
+        {% set bg = '#fff3e0' %}
+        {% set color = '#ff9800' %}
+    {% else %}
+        {% set bg = '#e3f2fd' %}
+        {% set color = '#1976d2' %}
+    {% endif %}
+    
+    <span style="background: {{ bg }}; color: {{ color }}; padding: 0.25rem 0.5rem; border-radius: 1rem;">
+        {{ member.title }}
+        {% if member.feed %}📡{% endif %}
+    </span>
+{% endmacro %}
+
+<!-- Use the macro -->
+{{ memberBadge(member, 'success') }}
+{{ memberBadge(member, 'warning') }}
+        {% endhighlight %}
+    </details>
     
     {% macro memberBadge(member, style='default') %}
         {% if style == 'success' %}
