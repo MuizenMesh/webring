@@ -74,7 +74,7 @@ Style your webring banner with our CSS themes - no React or build tools required
 </webring-banner>
 ```
 
-**Available themes:** Ocean, Sunset, Dark, Minimal  
+**Available themes:** Ocean, Sunset, Dark, Minimal, Tokyo, Dracula, Disco  
 **Demo:** [HTML/CSS Themes Demo](https://meshring.netlify.app/html-css-demo/)  
 **Files:** [html-demo/themes/](html-demo/themes/)
 
