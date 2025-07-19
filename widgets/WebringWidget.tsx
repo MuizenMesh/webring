@@ -93,6 +93,15 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
               className={styles.surferImage}
               role="img"
               aria-label="Surfer on a wave"
+              unoptimized={true}
+              onError={(e) => {
+                console.error('Surfer image failed to load:', e);
+                // Fallback to a simple icon or hide the image
+                e.currentTarget.style.display = 'none';
+              }}
+              onLoad={() => {
+                console.log('Surfer image loaded successfully');
+              }}
             />
           </div>
         )}
@@ -122,7 +131,6 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             className={styles.webringInfo}
-            aria-label="Learn more about webrings on Wikipedia (opens in new tab)"
             aria-describedby={showTooltip ? "webring-tooltip" : undefined}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
@@ -135,8 +143,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
             }}
             title=""
           >
-            <span aria-hidden="true">?</span>
-            <span className="sr-only">Learn more about webrings</span>
+            ?
           </a>
           
           {showTooltip && (
@@ -147,7 +154,7 @@ const WebringWidget: React.FC<WebringWidgetProps> = ({
               className={styles.webringTooltip}
               aria-live="polite"
             >
-              Learn more about webrings on Wikipedia
+              What is a webring? Click to learn more on Wikipedia
             </div>
           )}
         </div>
