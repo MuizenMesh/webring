@@ -389,7 +389,7 @@ Average: {{ average }}
     
     <details style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
         <summary style="cursor: pointer; font-weight: 600; color: #495057; margin-bottom: 0.5rem;">View Code: Custom Macro Definition</summary>
-        {% highlight 'njk' %}
+        {% highlight 'njk' %}{% raw %}
 <!-- Define a reusable macro -->
 {% macro memberBadge(member, style='default') %}
     {% if style == 'success' %}
@@ -412,7 +412,7 @@ Average: {{ average }}
 <!-- Use the macro -->
 {{ memberBadge(member, 'success') }}
 {{ memberBadge(member, 'warning') }}
-        {% endhighlight %}
+{% endraw %}        {% endhighlight %}
     </details>
     
     {% macro memberBadge(member, style='default') %}
