@@ -11,18 +11,18 @@
     },
     {
 	"title": "MuizeMesh Communities",
-	"url": "https://muizenmesh.co.za/wp/web",
-	"feed": "https://muizenmesh.co.za/wp/web/feed.xml"
+	"url": "https://muizenmesh.wordpress.com",
+	"feed": "https://muizenmesh.wordpress.com/feed.xml"
     },
     {
- 	"title": "Muizenberg Electricity CC",
-	"url": "https://mecc.org.za",
+ 	"title": "Muizenberg Electricity Coop",
+	"url": "https://umbane.netlify.app",
 	"feed": null
     },
     {
 	"title": "MECC Blog",
-	"url": "https://muizenmesh.co.za/wp/web/mecc/",
-	"feed": "https://muizenmesh.co.za/wp/web/mecc/feed.xml"
+	"url": "https://electromesh.wordpress.com/",
+	"feed": "https://electromesh.wordpress.com/feed.xml"
    },
    {
 	"title": "Netbones Solutions",
