@@ -1,5 +1,13 @@
 # MuizenMesh Webring
 
+
+[![GitHub](https://img.shields.io/badge/GitHub-MuizenMesh/webring-blue)](https://github.com/ubuntupunk/webring)
+[![License](https://img.shields.io/badge/License-GPL-green.svg)](LICENSE)
+
+<a href="https://github.com/pedromxavier/flag-badges">
+    <img src="https://raw.githubusercontent.com/pedromxavier/flag-badges/main/badges/ZA.svg" alt="made in za">
+</a>
+
 A community webring connecting sites from MuizenMesh Communities, including Muizenberg, Capricorn, and Vrygrond.
 
 Built using [Max Boeck's 11vnty Webring Project](https://github.com/maxboeck/webring) and inspired by posts from [Tatiana Mac](https://twitter.com/TatianaTMac/status/1114388079630929926) and [Charlie Owen](https://www.sonniesedge.net/posts/webrings).
